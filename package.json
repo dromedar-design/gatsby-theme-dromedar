@@ -1,0 +1,26 @@
+{
+  "name": "gatsby-theme-dromedar",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "dromedar.design <gabor@dromedar.design>",
+  "license": "MIT",
+  "peerDependencies": {
+    "gatsby": "^2.6.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "gatsby-plugin-postcss": "^2.1.8",
+    "gatsby-plugin-purgecss": "^4.0.1",
+    "gatsby-plugin-react-helmet": "^3.1.8",
+    "gatsby-plugin-sharp": "^2.2.25",
+    "gatsby-plugin-sitemap": "^2.2.19",
+    "gatsby-source-filesystem": "^2.1.25",
+    "gatsby-source-prismic-graphql": "^3.4.0-beta",
+    "gatsby-transformer-sharp": "^2.2.16",
+    "postcss-nested": "^4.1.2",
+    "prismic-reactjs": "^1.1.1",
+    "react-helmet": "^5.2.1",
+    "react-hook-form": "^3.24.0",
+    "tailwindcss": "^1.1.2"
+  }
+}
