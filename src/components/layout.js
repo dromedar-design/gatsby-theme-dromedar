@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './src/css/tailwind.css'
+import '../css/tailwind.css'
 
 export default ({ children }) => {
     return <>
