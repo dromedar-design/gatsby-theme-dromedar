@@ -37,6 +37,7 @@ module.exports = ({
                 resolve: `gatsby-plugin-purgecss`,
                 options: {
                     tailwind: true,
+                    purgeOnly: ['src/css/tailwind.css'],
                 },
             },
             'gatsby-plugin-react-helmet',
@@ -71,8 +72,18 @@ module.exports = ({
                     ],
                 }
             },
-            'gatsby-plugin-offline',
+            {
+                resolve: `gatsby-plugin-google-analytics`,
+                options: {
+                    trackingId: 'UA-105361191-5',
+                    exclude: [
+                        '/preview',
+                        ...pages.map(p => p.path),
+                    ],
+                },
+            },
             'gatsby-plugin-netlify',
+            'gatsby-plugin-offline',
         ]
     }
 }
