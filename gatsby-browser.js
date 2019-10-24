@@ -1,5 +1,3 @@
-import './src/css/tailwind.css'
-
 import axios from 'axios'
 
 export const onInitialClientRender = (_, options) => {

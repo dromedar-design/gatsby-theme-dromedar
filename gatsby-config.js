@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = ({
     url,
     language = 'en-us',
@@ -8,11 +6,6 @@ module.exports = ({
     author,
     title,
     description = '',
-
-    purgeCSS: {
-        purgeOnly = [path.join(__dirname, 'src/css/tailwind.css')],
-        content = [],
-    } = {},
 }) => {
     return {
         siteMetadata: {
@@ -44,12 +37,6 @@ module.exports = ({
                 resolve: `gatsby-plugin-purgecss`,
                 options: {
                     tailwind: true,
-                    purgeOnly,
-                    content: [
-                        path.join(__dirname, 'src/**/!(*.d).{ts,js,jsx,tsx}'),
-                        path.join(process.cwd(), 'src/**/!(*.d).{ts,js,jsx,tsx}'),
-                        ...content,
-                    ],
                 },
             },
             'gatsby-plugin-react-helmet',
@@ -60,8 +47,16 @@ module.exports = ({
                 options: {
                     exclude: [
                         '/preview',
-                        '/product',
+                        ...pages.map(p => p.path),
                     ]
+                }
+            },
+            {
+                resolve: "gatsby-plugin-react-svg",
+                options: {
+                    rule: {
+                        include: /assets/
+                    }
                 }
             },
             {
@@ -69,13 +64,15 @@ module.exports = ({
                 options: {
                     repositoryName: prismic,
                     defaultLang: language,
-                    previews: true,
+                    previews: 'production' !== process.env.NODE_ENV,
                     pages: pages,
                     sharpKeys: [
                         /image|photo|picture/,
                     ],
                 }
-            }
+            },
+            'gatsby-plugin-offline',
+            'gatsby-plugin-netlify',
         ]
     }
 }
