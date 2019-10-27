@@ -9,15 +9,30 @@ const Form = ({
 }) => {
     const { register, handleSubmit } = useForm()
     const [response, setResponse] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const onSubmit = data => {
+        setLoading(true)
+
         axios[method](url, data)
-            .then(res => setResponse(res.data))
-            .catch(e => console.log('catch', e.response.data))
+            .then(res => {
+                setLoading(false)
+                setResponse(res.data)
+            })
+            .catch(e => {
+                setLoading(false)
+                console.log('catch', e.response.data)
+            })
+    }
+
+    const state = {
+        response,
+        errors,
+        loading,
     }
 
     return <form onSubmit={handleSubmit(onSubmit)}>
-        {children(register, response, [])}
+        {children(register, state)}
     </form>
 }
 
