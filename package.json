@@ -35,5 +35,8 @@
   },
   "devDependencies": {
     "gatsby-plugin-remove-trailing-slashes": "^2.1.12"
+  },
+  "np": {
+    "releaseDraft": false
   }
 }
