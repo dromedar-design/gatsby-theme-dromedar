@@ -4,6 +4,10 @@
   "license": "MIT",
   "author": "dromedar.design <gabor@dromedar.design>",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dromedar-design/gatsby-theme-dromedar"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "gatsby-plugin-google-analytics": "^2.1.23",
