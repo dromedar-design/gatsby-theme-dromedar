@@ -9,7 +9,7 @@ export default ({
     description,
     titleTemplate = null,
 }) => {
-    const { site, prismic } = useStaticQuery(graphql`
+    const { site } = useStaticQuery(graphql`
         {
             site {
                 siteMetadata {
@@ -22,27 +22,22 @@ export default ({
         }
     `)
 
-    const home = {
-        title: prismic && RichText.asText(prismic.page.title || []),
-        desc: prismic && RichText.asText(prismic.page.description || []),
-    }
-
-    const metaDescription = description || home.desc
+    const metaDescription = description || site.siteMetadata.description
 
     return (
         <Helmet
-            titleTemplate={titleTemplate || `%s | ${home.title}`}
-            defaultTitle={`${home.title}`}
+            titleTemplate={titleTemplate || `%s | ${site.siteMetadata.title}`}
+            defaultTitle={`${site.siteMetadata.title}`}
         >
-            <html lang={site && site.siteMetadata.language} />
-            {title && <title>{title}</title>}
+            <html lang={site.siteMetadata.language} />
+            <title>{title}</title>
 
             <meta name="description" content={metaDescription} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={metaDescription} />
             <meta property="og:type" content="website" />
             <meta name="twitter:card" content="summary" />
-            <meta name="twitter:creator" content={site && site.siteMetadata.author} />
+            <meta name="twitter:creator" content={site.siteMetadata.author} />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={metaDescription} />
 

@@ -10,7 +10,7 @@ const style = {
 const Image = ({
     image,
     imageSharp,
-    caption,
+    caption = [],
 }) => {
     const title = '' // TODO: where does this come from?
     const alt = image.alt || RichText.asText(title || [])
@@ -24,7 +24,7 @@ const Image = ({
 
         {caption &&
             <figcaption>
-                {RichText.asText(caption || [])}
+                {RichText.asText(caption)}
             </figcaption>
         }
 
