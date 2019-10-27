@@ -22,14 +22,14 @@ export default ({
         }
     `)
 
-    const metaDescription = description || site.siteMetadata.description
+    const metaDescription = description || (site && site.siteMetadata.description)
 
     return (
         <Helmet
-            titleTemplate={titleTemplate || `%s | ${site.siteMetadata.title}`}
-            defaultTitle={`${site.siteMetadata.title}`}
+            titleTemplate={titleTemplate || `%s | ${site && site.siteMetadata.title}`}
+            defaultTitle={`${site && site.siteMetadata.title}`}
         >
-            <html lang={site.siteMetadata.language} />
+            <html lang={site && site.siteMetadata.language} />
             <title>{title}</title>
 
             <meta name="description" content={metaDescription} />
@@ -37,7 +37,7 @@ export default ({
             <meta property="og:description" content={metaDescription} />
             <meta property="og:type" content="website" />
             <meta name="twitter:card" content="summary" />
-            <meta name="twitter:creator" content={site.siteMetadata.author} />
+            <meta name="twitter:creator" content={site && site.siteMetadata.author} />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={metaDescription} />
 
