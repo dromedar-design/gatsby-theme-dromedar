@@ -7,7 +7,7 @@ const Form = ({
     url,
     method = 'post'
 }) => {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, errors } = useForm()
     const [response, setResponse] = useState('');
     const [loading, setLoading] = useState(false);
 
