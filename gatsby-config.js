@@ -42,7 +42,12 @@ module.exports = ({
             },
             'gatsby-plugin-react-helmet',
             'gatsby-plugin-remove-trailing-slashes',
-            'gatsby-plugin-sharp',
+            {
+                resolve: `gatsby-plugin-sharp`,
+                options: {
+                    pngCompressionSpeed: 10,
+                },
+            },
             'gatsby-transformer-sharp',
             {
                 resolve: 'gatsby-plugin-sitemap',
