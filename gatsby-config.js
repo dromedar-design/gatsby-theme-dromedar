@@ -78,16 +78,6 @@ module.exports = ({
                     ],
                 }
             },
-            {
-                resolve: `gatsby-plugin-google-analytics`,
-                options: {
-                    trackingId: 'UA-105361191-5',
-                    exclude: [
-                        '/preview',
-                        ...pages.map(p => p.path),
-                    ],
-                },
-            },
             'gatsby-plugin-netlify',
             'gatsby-plugin-offline',
         ]
