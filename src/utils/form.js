@@ -8,6 +8,7 @@ const Form = ({
     method = 'post',
     onSubmit = () => null,
     onError = () => null,
+    ...props
 }) => {
     const { register, handleSubmit, errors } = useForm()
     const [response, setResponse] = useState('');
@@ -37,7 +38,7 @@ const Form = ({
             })
     }
 
-    return <form onSubmit={handleSubmit(submitHandler)}>
+    return <form {...props} onSubmit={handleSubmit(submitHandler)}>
         {children(register, state)}
     </form>
 }
