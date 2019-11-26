@@ -1,7 +1,7 @@
-import './src/css/tailwind.css'
+import "./src/css/tailwind.css";
 
-import axios from 'axios'
+import axios from "axios";
 
 export const onInitialClientRender = (_, options) => {
-    axios.defaults.baseURL = options.api;
-}
+  axios.defaults.baseURL = options.api;
+};
