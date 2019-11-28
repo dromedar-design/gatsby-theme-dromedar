@@ -55,8 +55,7 @@ module.exports = ({
           }
         }
       },
-      "gatsby-plugin-netlify",
-      "gatsby-plugin-styled-components"
+      "gatsby-plugin-netlify"
     ]
   };
 };
