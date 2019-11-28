@@ -1,8 +1,6 @@
 module.exports = ({
   url,
   language = "en-us",
-  prismic,
-  pages = [],
   author,
   title,
   description = ""
@@ -48,12 +46,7 @@ module.exports = ({
         }
       },
       "gatsby-transformer-sharp",
-      {
-        resolve: "gatsby-plugin-sitemap",
-        options: {
-          exclude: ["/preview", ...pages.map(p => p.path)]
-        }
-      },
+      "gatsby-plugin-sitemap",
       {
         resolve: "gatsby-plugin-react-svg",
         options: {
@@ -63,7 +56,7 @@ module.exports = ({
         }
       },
       "gatsby-plugin-netlify",
-      "gatsby-plugin-offline"
+      "gatsby-plugin-styled-components"
     ]
   };
 };
