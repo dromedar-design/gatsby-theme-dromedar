@@ -7,18 +7,11 @@ const Form = ({
   url,
   method = "post",
   onSubmit = () => null,
-  onError = () => null,
   ...props
 }) => {
   const { register, handleSubmit, errors } = useForm();
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const state = {
-    response,
-    errors,
-    loading
-  };
 
   const submitHandler = data => {
     setLoading(true);
@@ -28,14 +21,18 @@ const Form = ({
         setLoading(false);
         setResponse(res.data);
 
-        onSubmit(state);
+        onSubmit(res.data);
       })
       .catch(e => {
         setLoading(false);
         console.log("catch", e.response.data);
-
-        onError(state);
       });
+  };
+
+  const state = {
+    response,
+    errors,
+    loading
   };
 
   return (
