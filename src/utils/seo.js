@@ -9,7 +9,7 @@ export default ({
   titleTemplate = null,
   image
 }) => {
-  const { site } = useStaticQuery(graphql`
+  const { site, home } = useStaticQuery(graphql`
     {
       site {
         siteMetadata {
@@ -17,6 +17,13 @@ export default ({
           description
           author
           language
+        }
+      }
+      home: prismicPage(uid: { eq: "home" }) {
+        data {
+          image {
+            url
+          }
         }
       }
     }
@@ -54,7 +61,7 @@ export default ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={image || home.data.image.url} />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={data.author} />
