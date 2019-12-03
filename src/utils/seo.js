@@ -75,7 +75,7 @@ export default ({ children, title, description, url, noTemplate, image }) => {
         {children}
       </Helmet>
 
-      <SchemaOrg
+      <Schema
         url={url || data.siteUrl}
         title={metaTitle}
         image={image}
