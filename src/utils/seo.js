@@ -56,8 +56,8 @@ export default ({ children, title, description, url, noTemplate, image }) => {
         <title>{metaTitle}</title>
         <meta name="description" content={metaDescription} />
         <meta name="image" content={image || home.data.image.url} />
-        <link href={url} rel="canonical" />
-        <link href={siteUrl} rel="home" />
+        <link href={url || data.siteUrl} rel="canonical" />
+        <link href={data.siteUrl} rel="home" />
 
         <meta property="og:locale" content={data.language} />
         <meta property="og:site_name" content={data.title} />
@@ -65,7 +65,7 @@ export default ({ children, title, description, url, noTemplate, image }) => {
         <meta property="og:description" content={metaDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={image || home.data.image.url} />
-        <meta property="og:url" content={url} />
+        <meta property="og:url" content={url || data.siteUrl} />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content={data.author} />
@@ -76,13 +76,13 @@ export default ({ children, title, description, url, noTemplate, image }) => {
       </Helmet>
 
       <SchemaOrg
-        url={url}
+        url={url || data.siteUrl}
         title={metaTitle}
         image={image}
         description={metaDescription}
         canonicalUrl={url}
         organization={{
-          url: siteUrl,
+          url: data.siteUrl,
           name: data.author,
           logo: "https://api.klingenland.at/img/klingenland.png"
         }}
